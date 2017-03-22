@@ -1,10 +1,10 @@
-
 int win = 0;
 
 
 void setup(){
   size(800,600);
-  //surface.setResizable(true);
+  surface.setResizable(true);
+  initMenu();
 }
 
 void draw(){
