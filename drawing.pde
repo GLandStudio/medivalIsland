@@ -23,7 +23,12 @@ class Menu{
     switch(type){
       case 0:
         textSize(height/15);
-        text(name,width/2,height/7*3+height/8*id);
+        if(isMouseOver()){
+          textSize(height/14);
+          //rect(width/4,height/7*4+height/8*id-height/15,width/2,height/10);
+        }
+        text(name,width/2,height/7*4+height/8*id);
+        
         break;
       case 1:
         textSize(height/6);
@@ -34,12 +39,39 @@ class Menu{
       m.draw();
     }
   }
+  boolean isMouseOver(){
+    if(mouseX>width/4){
+      if(mouseX<width/4+width/2){
+        if(mouseY>height/7*4+height/8*id-height/15){
+          if(mouseY<height/7*4+height/8*id-height/15+height/10){
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+  void onMousePressed(){
+    for(Menu m:menus){
+      m.onMousePressed();
+    }
+    if(!isMouseOver())
+      return;
+    if(link==-2){
+      exit();
+    }
+    else if(link!=-1){
+      win=link;
+    }
+  }
 }
 
 void initMenu(){
   mainMenu = new Menu("Medival Island",1,0);
   Menu play = new Menu("Play",1,0,0);
+  Menu exit = new Menu("Exit",-2,0,1);
   mainMenu.menus.add(play);
+  mainMenu.menus.add(exit);
 }
 
 void drawMainMenu(){

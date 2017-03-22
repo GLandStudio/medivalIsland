@@ -1,6 +1,6 @@
 
 void mousePressedMainMenu(){
-  
+  mainMenu.onMousePressed();
 }
 
 void mousePressedGame(){
