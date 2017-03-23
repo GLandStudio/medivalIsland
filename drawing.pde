@@ -9,10 +9,13 @@ class Tile{
   }
   void draw(){
     //print("hello"+x+" "+y);
-    if(type==0)
-      return;
+    //if(type==0)
+    //  return;
     int s = height/13;
     switch(type){
+      case 0:
+        fill(28,107,160);
+        break;
       case 1:
         fill(53, 173, 53);
         break;
@@ -88,6 +91,6 @@ void initGame(){
 }
 
 void drawGame(){
-  background(28,107,160);
+  background(225, 226, 201);
   w.draw();
 }

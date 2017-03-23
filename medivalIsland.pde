@@ -8,8 +8,8 @@ void updateSize(){
 }
 
 void setup(){
-  fullScreen();
-  //updateSize();
+  //fullScreen();
+  updateSize();
   //surface.setResizable(true);
   noStroke();
   initMenu();
