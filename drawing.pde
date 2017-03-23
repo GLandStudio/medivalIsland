@@ -9,7 +9,17 @@ class Tile{
   }
   void draw(){
     //print("hello"+x+" "+y);
+    if(type==0)
+      return;
     int s = height/13;
+    switch(type){
+      case 1:
+        fill(53, 173, 53);
+        break;
+      case 2:
+        fill(97, 114, 114);
+        break;
+    }
     rect(width/2-s*MAP_WIDTH/2+s*x,height/2-s*MAP_HEIGHT/2+s*y,s,s);
   }
 }
@@ -26,6 +36,18 @@ Tile[] parseMap(int[][] m){
   return ret;
 }
 
+int[][] extractMap(String[] s){
+  int[][] ret = new int[s.length][];
+  for(int i = 0;i<s.length;i++){
+    String[] a = s[i].replaceAll("\\s+", " ").split(" ");
+    ret[i]=new int[a.length];
+    for(int j = 0;j<a.length;j++){
+      ret[i][j]=int(a[j]);
+    }
+  }
+  return ret;
+}
+
 class Map{
   Tile[] tiles;
   String name;
@@ -35,6 +57,10 @@ class Map{
   }
   Map(int[][] tiles,String name){
     this.tiles=parseMap(tiles);
+    this.name=name;
+  }
+  Map(String map,String name){
+    this.tiles=parseMap(extractMap(loadStrings(map)));
     this.name=name;
   }
   void draw(){
@@ -57,18 +83,7 @@ class World{
 World w;
 
 void initGame(){
-  Map Gregland = new Map(new int[][]{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},},"Gregland");
+  Map Gregland = new Map(dataPath("res/maps/Gregland.txt"),"Gregland");
   w = new World(new Map[]{Gregland});
 }
 

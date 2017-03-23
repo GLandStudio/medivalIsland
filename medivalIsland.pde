@@ -11,6 +11,7 @@ void setup(){
   fullScreen();
   //updateSize();
   //surface.setResizable(true);
+  noStroke();
   initMenu();
   initGame();
 }
