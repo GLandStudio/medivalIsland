@@ -1,5 +1,6 @@
 
 final int MAP_WIDTH = 16,MAP_HEIGHT=12;
+float cameraPos = 0;
 class Tile{
   int x,y,type;
   Tile(int x,int y,int type){
@@ -23,7 +24,7 @@ class Tile{
         fill(97, 114, 114);
         break;
     }
-    rect(width/2-s*MAP_WIDTH/2+s*x,height/2-s*MAP_HEIGHT/2+s*y,s,s);
+    rect(width/2-s*MAP_WIDTH/2+s*x,height/2-s*MAP_HEIGHT/2+s*y,s+2,s+2);
   }
 }
 
@@ -79,7 +80,26 @@ class World{
     this.maps=maps;
   }
   void draw(){
+    pushMatrix();
+    translate(cameraPos/100f*size(),0);
     maps[x].draw();
+    popMatrix();
+    pushMatrix();
+    translate(size()/13*MAP_WIDTH+cameraPos/100f*size(),0);
+    int y = (x+1)==maps.length?0:(x+1);
+    maps[y].draw();
+    popMatrix();
+    pushMatrix();
+    translate(size()/13*(-MAP_WIDTH)+cameraPos/100f*size(),0);
+    y = (x-1)==-1?(maps.length-1):(x-1);
+    maps[y].draw();
+    popMatrix();
+  }
+  void nextMap(){
+    x=(x+1)==maps.length?0:(x+1);
+  }
+  void prevMap(){
+    x=(x-1)==-1?(maps.length-1):(x-1);
   }
 }
 
