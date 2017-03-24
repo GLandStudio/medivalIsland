@@ -1,5 +1,4 @@
 
-
 int win = 0;
 PVector size = new PVector(800,600);
 
@@ -10,10 +9,15 @@ void updateSize(){
 void setup(){
   //fullScreen();
   updateSize();
-  //surface.setResizable(true);
+  surface.setResizable(true);
   noStroke();
   initMenu();
   initGame();
+}
+
+int size(){
+  
+  return min(height,width*3/4);
 }
 
 void draw(){

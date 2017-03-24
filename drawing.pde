@@ -11,7 +11,7 @@ class Tile{
     //print("hello"+x+" "+y);
     //if(type==0)
     //  return;
-    int s = height/13;
+    int s = size()/13;
     switch(type){
       case 0:
         fill(28,107,160);

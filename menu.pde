@@ -22,19 +22,19 @@ class Menu{
     textAlign(CENTER);
     switch(type){
       case 0:
-        textSize(height/15);
+        textSize(size()/15);
         if(isMouseOver()){
-          textSize(height/14);
+          textSize(size()/14);
         }
         text(name,width/2,height/7*4+height/8*id);
         
         break;
       case 1:
-        textSize(height/10);
+        textSize(size()/10);
         text(name,width/2,height/3);
         break;
       case 2:
-        textSize(height/6);
+        textSize(size()/6);
         text(name,width/2,height/3);
         break;
     }
