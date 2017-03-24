@@ -1,5 +1,6 @@
 
 final int MAP_WIDTH = 16,MAP_HEIGHT=12;
+
 float cameraPos = 0;
 class Tile{
   int x,y,type;
@@ -39,7 +40,6 @@ Tile[] parseMap(int[][] m){
   }
   return ret;
 }
-
 int[][] extractMap(String[] s){
   int[][] ret = new int[s.length][];
   for(int i = 0;i<s.length;i++){
@@ -76,23 +76,37 @@ class Map{
 class World{
   int x=0;
   Map[] maps;
+  int playerMap,playerX,playerY;
   World(Map[] maps){
     this.maps=maps;
+    
   }
   void draw(){
     pushMatrix();
     translate(cameraPos/100f*size(),0);
     maps[x].draw();
+    if(playerMap==x){
+      int s = size()/13;
+      image(man,width/2-s*MAP_WIDTH/2+s*playerX,height/2-s*MAP_HEIGHT/2+s*playerY,s,s);
+    }
     popMatrix();
     pushMatrix();
     translate(size()/13*MAP_WIDTH+cameraPos/100f*size(),0);
     int y = (x+1)==maps.length?0:(x+1);
     maps[y].draw();
+    if(playerMap==y){
+      int s = size()/13;
+      image(man,width/2-s*MAP_WIDTH/2+s*playerX,height/2-s*MAP_HEIGHT/2+s*playerY,s,s);
+    }
     popMatrix();
     pushMatrix();
     translate(size()/13*(-MAP_WIDTH)+cameraPos/100f*size(),0);
     y = (x-1)==-1?(maps.length-1):(x-1);
     maps[y].draw();
+    if(playerMap==y){
+      int s = size()/13;
+      image(man,width/2-s*MAP_WIDTH/2+s*playerX,height/2-s*MAP_HEIGHT/2+s*playerY,s,s);
+    }
     popMatrix();
   }
   void nextMap(){
@@ -108,6 +122,9 @@ World w;
 void initGame(){
   Map Gregland = new Map(dataPath("res/maps/Gregland.txt"),"Gregland");
   w = new World(new Map[]{Gregland});
+  w.playerMap=0;
+  w.playerX=7;
+  w.playerY=5;
 }
 
 void drawGame(){

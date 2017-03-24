@@ -2,6 +2,8 @@
 int win = 0;
 PVector size = new PVector(800,600);
 
+PImage man;
+
 void updateSize(){
   surface.setSize(int(size.x),int(size.y));
 }
@@ -13,6 +15,11 @@ void setup(){
   noStroke();
   initMenu();
   initGame();
+  initImages();
+}
+
+void initImages(){
+  man=loadImage(dataPath("res/textures/man.png"));
 }
 
 int size(){
