@@ -1,7 +1,8 @@
-
+//size of map in tiles
 final int MAP_WIDTH = 16,MAP_HEIGHT=12;
-
+//x pos of camera
 float cameraPos = 0;
+//tile class
 class Tile{
   int x,y,type;
   Tile(int x,int y,int type){
@@ -28,7 +29,7 @@ class Tile{
     rect(width/2-s*MAP_WIDTH/2+s*x,height/2-s*MAP_HEIGHT/2+s*y,s+2,s+2);
   }
 }
-
+//parses map
 Tile[] parseMap(int[][] m){
   Tile[] ret = new Tile[m.length*m[0].length];
   int a = 0;
@@ -40,6 +41,7 @@ Tile[] parseMap(int[][] m){
   }
   return ret;
 }
+//extracts map data from loaded file
 int[][] extractMap(String[] s){
   int[][] ret = new int[s.length][];
   for(int i = 0;i<s.length;i++){
@@ -51,7 +53,7 @@ int[][] extractMap(String[] s){
   }
   return ret;
 }
-
+//map class
 class Map{
   Tile[] tiles;
   String name;
@@ -73,6 +75,7 @@ class Map{
     }
   }
 }
+//world class
 class World{
   int x=0;
   Map[] maps;
@@ -116,9 +119,9 @@ class World{
     x=(x-1)==-1?(maps.length-1):(x-1);
   }
 }
-
+//main world
 World w;
-
+//runs on start to initialize game
 void initGame(){
   Map Gregland = new Map(dataPath("res/maps/Gregland.txt"),"Gregland");
   w = new World(new Map[]{Gregland});
@@ -126,7 +129,7 @@ void initGame(){
   w.playerX=7;
   w.playerY=5;
 }
-
+//draws game
 void drawGame(){
   background(225, 226, 201);
   w.draw();

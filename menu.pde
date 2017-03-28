@@ -1,10 +1,16 @@
-
+//main manu
 Menu mainMenu;
+//menu class
 class Menu{
+  //name of menu
   String name;
+  //link of menu(if -1 points to nowhere, if -2 exits the game, when other than that changes window number to itself)
   int link=-1;
+  //type 0 is button, type 1 is submenu title, type 2 is main menu title
   int type = 0;
+  //position in list
   int id = 0;
+  //submenus
   ArrayList<Menu> menus = new ArrayList<Menu>();
   public Menu(String name,int type,int id){
     this.name=name;
@@ -68,7 +74,7 @@ class Menu{
     }
   }
 }
-
+//initializes menu
 void initMenu(){
   mainMenu = new Menu("Medival Island",-1,2,0);
   Menu play = new Menu("Play",1,0,0);
@@ -78,7 +84,7 @@ void initMenu(){
   //mainMenu.menus.add(set);
   mainMenu.menus.add(exit);
 }
-
+//draws menu
 void drawMainMenu(){
   background(255);
   mainMenu.draw();

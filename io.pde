@@ -1,16 +1,16 @@
-
+//runs when mouse pressed in menu
 void mousePressedMainMenu(){
   mainMenu.onMousePressed();
 }
-
+//runs when mouse pressed in game
 void mousePressedGame(){
   
 }
-
+//runs when key pressed in menu
 void keyPressedMainMenu(){
   
 }
-
+//runs when key pressed in game
 void keyPressedGame(){
   if (key == ESC) {
     key = 0;
