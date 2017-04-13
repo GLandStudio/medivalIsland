@@ -8,6 +8,7 @@ PImage man;
 void updateSize(){
   surface.setSize(int(size.x),int(size.y));
 }
+//kokoko
 //runs on start
 void setup(){
   //fullScreen();
