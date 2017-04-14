@@ -2,6 +2,8 @@
 final int MAP_WIDTH = 16,MAP_HEIGHT=12;
 //x pos of camera
 float cameraPos = 0;
+//y pos of camera
+float cameraUD = 0;
 //tile class
 class Tile{
   int x,y,type;
@@ -86,7 +88,7 @@ class World{
   }
   void draw(){
     pushMatrix();
-    translate(cameraPos/100f*size(),0);
+    translate(cameraPos/100f*size(),cameraUD/100f*size());
     maps[x].draw();
     if(playerMap==x){
       int s = size()/13;
@@ -94,7 +96,7 @@ class World{
     }
     popMatrix();
     pushMatrix();
-    translate(size()/13*MAP_WIDTH+cameraPos/100f*size(),0);
+    translate(size()/13*MAP_WIDTH+cameraPos/100f*size(),cameraUD/100f*size());
     int y = (x+1)==maps.length?0:(x+1);
     maps[y].draw();
     if(playerMap==y){
@@ -103,7 +105,7 @@ class World{
     }
     popMatrix();
     pushMatrix();
-    translate(size()/13*(-MAP_WIDTH)+cameraPos/100f*size(),0);
+    translate(size()/13*(-MAP_WIDTH)+cameraPos/100f*size(),cameraUD/100f*size());
     y = (x-1)==-1?(maps.length-1):(x-1);
     maps[y].draw();
     if(playerMap==y){

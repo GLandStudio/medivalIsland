@@ -49,4 +49,12 @@ void keyPressedGame(){
       
     }
   }
+  
+  if(keyCode == UP) {
+    cameraUD+=0.4f;
+  }
+  
+  if(keyCode == DOWN) {
+    cameraUD-=0.4f;
+  }
 }
