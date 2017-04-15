@@ -1,5 +1,5 @@
 //size of map in tiles
-final int MAP_WIDTH = 16,MAP_HEIGHT=12;
+final int MAP_WIDTH = 16,MAP_HEIGHT= 16;
 //x pos of camera
 float cameraPos = 0;
 //y pos of camera
@@ -18,14 +18,37 @@ class Tile{
     //  return;
     int s = size()/13;
     switch(type){
-      case 0:
-        fill(28,107,160);
-        break;
       case 1:
-        fill(53, 173, 53);
+        //sand
+        fill(#ffff33);
         break;
       case 2:
-        fill(97, 114, 114);
+        //water
+        fill(#66ccff);
+        break;
+      case 3:
+        //forest
+        fill(#669900);
+        break;
+      case 4:
+        //grass
+        fill(#00ff66);
+        break;
+      case 5:
+        //mountains
+        fill(#999966);
+        break;
+      case 6:
+        //uplands
+        fill(#99cc00);
+        break;
+      case 7:
+        //cave
+        fill(#191919);
+        break;
+      case 8:
+        //city
+        fill(#856363);
         break;
     }
     rect(width/2-s*MAP_WIDTH/2+s*x,height/2-s*MAP_HEIGHT/2+s*y,s+2,s+2);
