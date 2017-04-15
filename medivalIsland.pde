@@ -13,7 +13,7 @@ void setup(){
   //fullScreen();
   updateSize();
   surface.setResizable(true);
-  //noStroke();
+  noStroke();
   initMenu();
   initGame();
   initImages();
