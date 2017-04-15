@@ -24,7 +24,7 @@ class Tile{
         break;
       case 0:
         //water
-        fill(#66ccff);
+        fill(28,107,160);
         break;
       case 3:
         //forest
@@ -32,7 +32,7 @@ class Tile{
         break;
       case 1:
         //grass
-        fill(#00ff66);
+        fill(53, 173, 53);
         break;
       case 5:
         //mountains
