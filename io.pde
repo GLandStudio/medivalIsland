@@ -22,6 +22,19 @@ void mousePressedGame(){
   int tx = floor((mxp-width/2+MAP_WIDTH/2*size()/13)*13/size());
   int ty = floor((mouseY-height/2+MAP_HEIGHT/2*size()/13)*13/size());
   println(tx+" "+ty);
+  if(tx == w.playerX) {
+    if(ty == w.playerY) {
+      println("");
+      println("=========");
+      println("Samurais");
+      println("2 legions");
+      println("HP: 100%");
+      println("MOVE: 3");
+      println("ATACK: 1");
+      println("=========");
+      println("");
+    }
+  }
 }
 //runs when key pressed in menu
 void keyPressedMainMenu(){

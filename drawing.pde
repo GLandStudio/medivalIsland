@@ -18,11 +18,11 @@ class Tile{
     //  return;
     int s = size()/13;
     switch(type){
-      case 1:
+      case 4:
         //sand
         fill(#ffff33);
         break;
-      case 2:
+      case 0:
         //water
         fill(#66ccff);
         break;
@@ -30,7 +30,7 @@ class Tile{
         //forest
         fill(#669900);
         break;
-      case 4:
+      case 1:
         //grass
         fill(#00ff66);
         break;
